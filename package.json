@@ -1,0 +1,17 @@
+{
+  "name": "bootcamp-api-exercicio",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Gustavo Rafael",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  },
+  "repository": "https://github.com/gustavorafaell/bootcamp-api-rest.git"
+}
