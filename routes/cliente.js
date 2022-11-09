@@ -1,16 +1,16 @@
-const express = require("express");
-const router = express.Router();
+const { Router} = require("express"); // pega somente o recurso Router do express
+const router = Router();
 
-router.get("/:id?", function(req, res){ //? para deixar o parametro id opcional
+router.get("/:id?", (req, res) =>{ //? para deixar o parametro id opcional
     res.send("Listar cliente");
 });
-router.post("/", function (req, res){
+router.post("/", (req, res) =>{ //ARROW Functions
     res.send("Criar cliente");
 });
-router.put("/:id", function (req, res) { // parametro id obrigatório
+router.put("/:id", (req, res) => { // parametro id obrigatório
     res.send("Atualizar cliente");
 });
-router.delete("/:id", function (req, res){
+router.delete("/:id", (req, res) =>{ //ARROW Functions define uma funcao
     res.send("Excluir cliente");
 })
 
