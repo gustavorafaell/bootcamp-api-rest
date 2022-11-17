@@ -3,6 +3,8 @@ const app = express(); //metodo de inicialização express
 const cliente = require("./routes/cliente"); 
 const pedido  = require("./routes/pedido");
 const cep = require("./routes/cep");
+
+
 /*permitir que a aplicação seja iniciada
 No arquivo JSON
 license...
