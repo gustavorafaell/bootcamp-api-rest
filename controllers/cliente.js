@@ -1,4 +1,6 @@
 const { cliente } = require("../models");
+const jwt = require("jsonwebtoken");
+const { palavraChave } = require("../config/token.json");
 
 const criar = async({nome, email, senha, cpf}) =>{
     const [result, isNewRecord] = await cliente.findOrCreate({
@@ -49,4 +51,21 @@ const buscar = async(id = null) => {
             attributes: atributos,
         });
     };
-module.exports = { criar, atualizar, remover, buscar };
+
+    const login =async (email, senha) => {
+        try {
+            const result = await cliente.findOne({
+                where: {
+                    email: email,
+                }
+            });
+
+            if(!result || result.senha !== senha){
+                return false;
+            }
+            return jwt.sign({id: result.id}, palavraChave, {expiresIn: "2h"}); //{}=> objeto;
+        } catch (error) {
+            throw error;
+        }
+    }
+module.exports = { criar, atualizar, remover, buscar, login };
