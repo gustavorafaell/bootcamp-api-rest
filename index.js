@@ -5,6 +5,8 @@ const pedido  = require("./routes/pedido");
 const cep = require("./routes/cep");
 const tipoProduto = require("./routes/tipo_produto");
 const produto = require("./routes/produto");
+const login = require("./routes/login");
+const verifyToken = require("./middlewares/auth");
 
 
 /*permitir que a aplicação seja iniciada
@@ -16,9 +18,12 @@ license...
 /* Instalar dependencias nodemon
 yarn add -D nodemon*/
 app.use(express.json()); //poder ler o body da requisição
-app.use("/cliente", cliente);
-app.use("/pedido", pedido);
+
+app.use("/login", login);
 app.use("/cep", cep);
+app.use("/cliente", cliente);
+app.use(verifyToken); //tudo que vier depois do middleware está protegido
+app.use("/pedido", pedido);
 app.use("/tipo_produto", tipoProduto);
 app.use("/produto", produto);
 
